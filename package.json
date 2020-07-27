@@ -2,7 +2,8 @@
   "name": "wedding-invitation",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run build && http-server dist/my-app",
+    "start:dev": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -38,6 +39,7 @@
     "echarts": "^4.0.2",
     "eva-icons": "^1.1.3",
     "express": "^4.17.1",
+    "http-server": "^0.12.3",
     "intl": "1.2.5",
     "ionicons": "2.0.1",
     "leaflet": "1.2.0",

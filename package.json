@@ -2,7 +2,7 @@
   "name": "wedding-invitation",
   "scripts": {
     "ng": "ng",
-    "start": "http-server-spa dist/my-app",
+    "start": "http-server-spa dist/my-app index.html 3000",
     "start:dev": "ng serve",
     "build": "ng build",
     "test": "ng test",

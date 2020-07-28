@@ -8,10 +8,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot -prod"
+    "postinstall": "ng build --aot --prod"
   },
   "engines": {
-    "node": "12.0"
+    "node": "12.0",
+    "npm": "6.14"
   },
   "heroku-run-build-script": true,
   "dependencies": {

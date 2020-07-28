@@ -2,20 +2,23 @@
   "name": "wedding-invitation",
   "scripts": {
     "ng": "ng",
-    "start": "http-server-spa dist/my-app index.html 3000",
+    "start": "node server.js",
     "start:dev": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
   },
   "heroku-run-build-script": true,
   "dependencies": {
     "@akveo/ng2-completer": "^9.0.1",
     "@angular/animations": "^9.1.9",
     "@angular/cdk": "^9.2.4",
+    "@angular/cli": "^9.1.7",
     "@angular/common": "^9.1.9",
     "@angular/compiler": "^9.1.9",
+    "@angular/compiler-cli": "^9.1.9",
     "@angular/core": "^9.1.9",
     "@angular/forms": "^9.1.9",
     "@angular/google-maps": "^9.2.4",
@@ -53,6 +56,7 @@
     "tinymce": "4.5.7",
     "tslib": "^1.10.0",
     "typeface-exo": "0.0.22",
+    "typescript": "3.7.3",
     "web-animations-js": "^2.3.2",
     "zone.js": "^0.10.3"
   },
@@ -72,6 +76,7 @@
     "codelyzer": "^5.2.2",
     "conventional-changelog-cli": "^2.0.34",
     "copy-webpack-plugin": "^6.0.2",
+    "enhanced-resolve": "^3.3.0",
     "husky": "0.13.3",
     "jasmine-core": "2.6.4",
     "jasmine-spec-reporter": "4.1.1",

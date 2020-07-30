@@ -14,7 +14,7 @@ export class UsersComponent {
   private familiesCollection: AngularFirestoreCollection<any>;
   public families: Observable<any[]>;
   public allFamilies: any[] = [];
-  private id:string;
+  public id:string;
   public family:any;
   constructor(
     db: AngularFirestore,

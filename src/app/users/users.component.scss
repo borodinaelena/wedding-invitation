@@ -1,12 +1,61 @@
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
 
 .content{
 
     max-width: 910px;
     margin: auto;
+    padding-top: 110px;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 iframe{
     width: 100%;
+}
+
+.label{
+    font-size: 18px;
+    color: #004c8c;
+}
+
+.toggle-text{
+    font-size: 16px;
+}
+
+::ng-deep {
+    .nb-theme-default nb-tabset .tab.active .tab-link::before {
+        background-color: #004c8c !important;
+    }
+    .nb-theme-default nb-tabset .tab.active .tab-link {
+        color: #004c8c !important;
+    }
+    
+    .nb-theme-default nb-card {
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+
+    .nb-theme-default [nbButton].appearance-outline.status-primary {
+        border-color: #004c8c;
+        color: #004c8c;
+    }
+
+    .nb-theme-default [nbButton].appearance-outline.status-primary:focus {
+        border-color: #004c8c !important;
+        color: #004c8c !important;
+    }
+
+    nb-tab{
+        overflow-y: hidden !important;
+    }
+
+    nb-tabset{
+        box-shadow: 0 0.5rem 1rem 0 rgba(44,51,73,0.1) !important;
+        padding: 1rem !important;
+    }
 }
 
 @media (min-width: 1199.98px) { 

@@ -1,13 +1,45 @@
 <div *ngIf="id && id==='adminadmin'" class="content">
   adminPage
 </div>
+<div *ngIf="id && id!=='adminadmin' && family" class="content mb-4">
 
-<div *ngIf="id && id!=='adminadmin'" class="content">
   <iframe src="https://www.youtube.com/embed/I7CfaDYzTVM" frameborder="0"
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
     class="mt-4 mb-4"></iframe>
-  {{family|json}}
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2680.90861206996!2d35.167420515636735!3d47.78322007919677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40dc5e518094fc6d%3A0xca441b5cbad9faf6!2z0JLQvtC00L7Qs9GA0LDQuQ!5e0!3m2!1suk!2sua!4v1596097557642!5m2!1suk!2sua"
-    frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+  <nb-tabset class=" mb-4" *ngIf="!hideTab && family && family.members" (changeTab)="changeTab($event)">
+
+    <nb-tab *ngFor="let member of family.members" [tabTitle]="member.name" class="p-4" [active]="member.selected"
+      (changeTab)="changeTab($event)">
+      <nb-card>
+        <nb-card-body class="example-items-col">
+
+          <div class="mb-4">
+            <label class="label mb-3">Ім'я</label>
+            <input nbInput fullWidth placeholder="Ім'я" [(ngModel)]="member.name">
+          </div>
+          <div class="mb-4">
+            <label class="label mb-3">Декілька слів про себе</label>
+            <textarea nbInput fullWidth placeholder="Декілька слів про себе"
+              (change)="changeField($event, member, 'description')"> {{member.description}}</textarea>
+          </div>
+          <div class="mb-4">
+            <label class="label mb-3">Чи будеш ти говорити тост?</label>
+            <div class="d-flex align-items-center">
+              <div class="mr-2 toggle-text">Нi</div>
+              <nb-toggle (checkedChange)="member.toast = $event" [checked]="member.toast"></nb-toggle>
+              <div class="ml-2 toggle-text">Так</div>
+            </div>
+          </div>
+          <button nbButton outline status="primary" class="align-self-baseline" (click)="save()">Зберегти</button>
+        </nb-card-body>
+      </nb-card>
+    </nb-tab>
+  </nb-tabset>
+  <button nbButton outline status="primary" class="align-self-baseline" (click)="save()">Зберегти</button>
+
+  <div class="pb-4">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2680.90861206996!2d35.167420515636735!3d47.78322007919677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40dc5e518094fc6d%3A0xca441b5cbad9faf6!2z0JLQvtC00L7Qs9GA0LDQuQ!5e0!3m2!1suk!2sua!4v1596097557642!5m2!1suk!2sua"
+      frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+  </div>
 </div>

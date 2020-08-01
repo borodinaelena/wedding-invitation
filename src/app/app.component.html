@@ -1,12 +1,12 @@
-<div class="header">
-  <nav class="navbar navbar-light bg-light d-flex align-items-center justify-content-center">
-    <h1 class="navbar-brand mb-0 h1">Ласкаво просимо на наше весiлля
-    </h1>
-    <div class="material-icons">
-      favorite_border
-    </div>
-  </nav>
-</div>
-<div class="container">
-    <router-outlet></router-outlet>
-</div>
+<nb-layout>
+  <nb-layout-header class="header">
+    <div class="position-relative">
+    <img class="img" src="/../assets/watercolor-cloud-8.png" alt="image">
+    <img class="img second-img" src="/../assets/12980-three-hearts-design.png" alt="image">
+  </div>
+        <h3 class="navbar-brand mb-0 h1">Весiлля Хмаринок </h3>
+  </nb-layout-header>
+  <nb-layout-column>
+      <router-outlet></router-outlet>
+  </nb-layout-column>
+</nb-layout>

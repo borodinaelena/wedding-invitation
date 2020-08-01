@@ -1,5 +1,39 @@
 <div *ngIf="id && id==='adminadmin'" class="content">
-  adminPage
+
+  <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
+
+    <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+    <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+    <ng-container [nbTreeGridColumnDef]="customColumn">
+      <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(customColumn)" *nbTreeGridHeaderCellDef>
+        {{getColumnName(customColumn)}}
+      </th>
+      <td nbTreeGridCell *nbTreeGridCellDef="let row" [ngClass]="{grey: row.data.kind===dir}">
+        <nb-tree-grid-row-toggle [expanded]="row.expanded" *ngIf="row.data.kind === 'dir'">
+        </nb-tree-grid-row-toggle>
+        {{row.data[customColumn]}}
+      </td>
+    </ng-container>
+
+    <ng-container *ngFor="let column of defaultColumns; let index = index" [nbTreeGridColumnDef]="column"
+      [showOn]="getShowOn(index)">
+      <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
+        {{getColumnName(column)}}
+      </th>
+      <td nbTreeGridCell *nbTreeGridCellDef="let row" [ngClass]="{grey: row.data.kind===dir}"  (click)="goTo(row.data.id)">
+
+      <div *ngIf="column==='toast'" class="d-flex justify-content-center">
+        <nb-checkbox [disabled]="true" [checked]="row.data[column]"></nb-checkbox>
+      </div>
+      <div *ngIf="column!=='toast'">
+        {{row.data[column]}}
+      </div>
+      </td>
+    </ng-container>
+
+  </table>
+
 </div>
 <div *ngIf="id && id!=='adminadmin' && family" class="content mb-4">
 
@@ -35,7 +69,6 @@
       </nb-card>
     </nb-tab>
   </nb-tabset>
-  <button nbButton outline status="primary" class="align-self-baseline" (click)="save()">Зберегти</button>
 
   <div class="pb-4">
     <iframe

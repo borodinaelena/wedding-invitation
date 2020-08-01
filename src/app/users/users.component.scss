@@ -24,6 +24,10 @@ iframe{
     font-size: 16px;
 }
 
+.grey{
+    background-color: #edf1f7;
+}
+
 ::ng-deep {
     .nb-theme-default nb-tabset .tab.active .tab-link::before {
         background-color: #004c8c !important;

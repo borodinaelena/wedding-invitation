@@ -21,14 +21,15 @@
       <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
         {{getColumnName(column)}}
       </th>
-      <td nbTreeGridCell *nbTreeGridCellDef="let row" [ngClass]="{grey: row.data.kind===dir}"  (click)="goTo(row.data.id)">
+      <td nbTreeGridCell *nbTreeGridCellDef="let row" [ngClass]="{grey: row.data.kind===dir}"
+        (click)="goTo(row.data.id)">
 
-      <div *ngIf="column==='toast'" class="d-flex justify-content-center">
-        <nb-checkbox [disabled]="true" [checked]="row.data[column]"></nb-checkbox>
-      </div>
-      <div *ngIf="column!=='toast'">
-        {{row.data[column]}}
-      </div>
+        <div *ngIf="column==='toast'" class="d-flex justify-content-center">
+          <nb-checkbox [disabled]="true" [checked]="row.data[column]"></nb-checkbox>
+        </div>
+        <div *ngIf="column!=='toast'">
+          {{row.data[column]}}
+        </div>
       </td>
     </ng-container>
 
@@ -71,6 +72,7 @@
   </nb-tabset>
 
   <div class="pb-4">
+    <h2 class="text-center">Весілля відбудеться 16 вересня о 18:00 у ресторанi VODOGRAY!</h2>
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2680.90861206996!2d35.167420515636735!3d47.78322007919677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40dc5e518094fc6d%3A0xca441b5cbad9faf6!2z0JLQvtC00L7Qs9GA0LDQuQ!5e0!3m2!1suk!2sua!4v1596097557642!5m2!1suk!2sua"
       frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>

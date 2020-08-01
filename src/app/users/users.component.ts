@@ -132,7 +132,7 @@ export class UsersComponent {
   }
 
   goTo(id) {
-    window.open(`https://wedding-invitation-oplachko.herokuapp.com//welcome/${id}`); 
+    window.open(`https://wedding-invitation-oplachko.herokuapp.com/${id}`); 
   }
 
 }

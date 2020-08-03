@@ -131,8 +131,11 @@ export class UsersComponent {
     }
   }
 
-  goTo(id) {
-    window.open(`https://wedding-invitation-oplachko.herokuapp.com/${id}`); 
+  goTo(data) {
+    if(data.kind==='dir'){
+      return;
+    }
+    window.open(`https://wedding-invitation-oplachko.herokuapp.com/${data.id}`); 
   }
 
 }

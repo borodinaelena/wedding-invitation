@@ -1,6 +1,6 @@
 <div *ngIf="id && id==='adminadmin'" class="content">
 
-  <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
+  <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)" [expanded]="true">
 
     <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
     <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
@@ -9,7 +9,7 @@
       <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(customColumn)" *nbTreeGridHeaderCellDef>
         {{getColumnName(customColumn)}}
       </th>
-      <td nbTreeGridCell *nbTreeGridCellDef="let row" [ngClass]="{grey: row.data.kind===dir}">
+      <td nbTreeGridCell *nbTreeGridCellDef="let row" [ngClass]="{grey: row.data.kind!=='dir'}" (click)="goTo(row.data)">
         <nb-tree-grid-row-toggle [expanded]="row.expanded" *ngIf="row.data.kind === 'dir'">
         </nb-tree-grid-row-toggle>
         {{row.data[customColumn]}}
@@ -21,8 +21,8 @@
       <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
         {{getColumnName(column)}}
       </th>
-      <td nbTreeGridCell *nbTreeGridCellDef="let row" [ngClass]="{grey: row.data.kind===dir}"
-        (click)="goTo(row.data.id)">
+      <td nbTreeGridCell *nbTreeGridCellDef="let row" [ngClass]="{grey: row.data.kind!=='dir'}"
+        (click)="goTo(row.data)">
 
         <div *ngIf="column==='toast'" class="d-flex justify-content-center">
           <nb-checkbox [disabled]="true" [checked]="row.data[column]"></nb-checkbox>
@@ -53,7 +53,7 @@
             <input nbInput fullWidth placeholder="Ім'я" [(ngModel)]="member.name">
           </div>
           <div class="mb-4">
-            <label class="label mb-3">Декілька слів про себе</label>
+            <label class="label mb-3">Декілька фактiв про себе</label>
             <textarea nbInput fullWidth placeholder="Декілька слів про себе"
               (change)="changeField($event, member, 'description')"> {{member.description}}</textarea>
           </div>

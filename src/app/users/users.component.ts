@@ -138,8 +138,8 @@ export class UsersComponent {
     if (data.kind === 'dir') {
       return;
     }
-    // window.open(`https://wedding-invitation-oplachko.herokuapp.com/${data.id}`); 
-    window.open(`http://localhost:4200/${data.id}`);
+    window.open(`https://wedding-invitation-oplachko.herokuapp.com/${data.id}`); 
+    // window.open(`http://localhost:4200/${data.id}`);
   }
 
 }

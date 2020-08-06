@@ -65,6 +65,11 @@
               <div class="ml-2 toggle-text">Так</div>
             </div>
           </div>
+          <div class="mb-4">
+            <label class="label mb-3">Під яку музику ти любишь танцювати</label>
+            <textarea nbInput fullWidth placeholder="Декілька слів про себе"
+              (change)="changeField($event, member, 'description')"> {{member.music ||'Не має значення'}}</textarea>
+          </div>
           <button nbButton outline status="primary" class="align-self-baseline" (click)="save()">Зберегти</button>
         </nb-card-body>
       </nb-card>

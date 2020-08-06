@@ -24,7 +24,7 @@ export class UsersComponent {
   public hideTab = false;
   private data: any[] = [];
   customColumn = 'name';
-  defaultColumns = ['last_name', 'toast', 'description'];
+  defaultColumns = ['last_name', 'toast', 'description', 'music'];
   allColumns = [this.customColumn, ...this.defaultColumns];
 
   dataSource: NbTreeGridDataSource<any>;
@@ -66,10 +66,8 @@ export class UsersComponent {
 
     this.families.subscribe(res => {
       this.allFamilies = res;
-      console.log('1');
       this.allFamilies.map(f => {
-        console.log('1');
-
+        this.data=[];
         this.data.push({
           data: { name: f.name, id: f.id, kind: 'dir' },
           children: [],
@@ -116,7 +114,7 @@ export class UsersComponent {
   showToast() {
     this.toastrService.show('',
       `Збережено ;)`);
-  }
+  } 
 
   getColumnName(column) {
     switch (column) {
@@ -128,6 +126,8 @@ export class UsersComponent {
         return 'Тост';
       case 'description':
         return 'О себе';
+      case 'music':
+        return 'Музика'
     }
   }
 

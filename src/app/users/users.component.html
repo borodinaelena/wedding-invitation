@@ -1,6 +1,6 @@
-<div *ngIf="id && id==='adminadmin'" class="content">
-
-  <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)" [expanded]="true">
+<div *ngIf="id && id==='adminadmin'" class="content pb-4">
+<!-- {{dataSource|json}} -->
+  <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)" [expanded]="true" class="margin">
 
     <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
     <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
@@ -68,7 +68,7 @@
           <div class="mb-4">
             <label class="label mb-3">Під яку музику ти любишь танцювати</label>
             <textarea nbInput fullWidth placeholder="Декілька слів про себе"
-              (change)="changeField($event, member, 'description')"> {{member.music ||'Не має значення'}}</textarea>
+              (change)="changeField($event, member, 'music')"> {{member.music ||'Не має значення'}}</textarea>
           </div>
           <button nbButton outline status="primary" class="align-self-baseline" (click)="save()">Зберегти</button>
         </nb-card-body>

@@ -66,8 +66,8 @@ export class UsersComponent {
 
     this.families.subscribe(res => {
       this.allFamilies = res;
+      this.data = [];
       this.allFamilies.map(f => {
-        this.data=[];
         this.data.push({
           data: { name: f.name, id: f.id, kind: 'dir' },
           children: [],
@@ -77,8 +77,11 @@ export class UsersComponent {
             this.data[this.data.length - 1].children.push({ data: m });
             const child = this.data[this.data.length - 1].children[this.data[this.data.length - 1].children.length - 1].data;
             child.id = f.id;
+            child.music = child.music || '';
             this.data[this.data.length - 1].data.toast = this.data[this.data.length - 1].data.toast || false;
             this.data[this.data.length - 1].data.toast = m.toast ? true : this.data[this.data.length - 1].data.toast;
+            this.data[this.data.length - 1].data.music = !this.data[this.data.length - 1].data.music ? child.music : this.data[this.data.length - 1].data.music + '; ' + child.music;
+
           });
         }
       });
@@ -114,7 +117,7 @@ export class UsersComponent {
   showToast() {
     this.toastrService.show('',
       `Збережено ;)`);
-  } 
+  }
 
   getColumnName(column) {
     switch (column) {
@@ -132,10 +135,11 @@ export class UsersComponent {
   }
 
   goTo(data) {
-    if(data.kind==='dir'){
+    if (data.kind === 'dir') {
       return;
     }
-    window.open(`https://wedding-invitation-oplachko.herokuapp.com/${data.id}`); 
+    // window.open(`https://wedding-invitation-oplachko.herokuapp.com/${data.id}`); 
+    window.open(`http://localhost:4200/${data.id}`);
   }
 
 }

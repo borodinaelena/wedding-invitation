@@ -33,6 +33,10 @@ h2{
     font-size: 20px;
 }
 
+.margin{
+    margin-bottom: 150px;
+}
+
 ::ng-deep {
     .nb-theme-default nb-tabset .tab.active .tab-link::before {
         background-color: #004c8c !important;

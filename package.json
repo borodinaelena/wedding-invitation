@@ -50,6 +50,7 @@
     "leaflet": "1.2.0",
     "moment": "^2.26.0",
     "nebular-icons": "1.1.0",
+    "ng2-completer": "^9.0.1",
     "ng2-file-upload": "^1.4.0",
     "node-sass": "^4.14.1",
     "normalize.css": "6.0.0",

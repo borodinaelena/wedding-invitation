@@ -24,7 +24,7 @@ export class UsersComponent {
   public hideTab = false;
   private data: any[] = [];
   customColumn = 'name';
-  defaultColumns = ['last_name', 'toast', 'description', 'music'];
+  defaultColumns = ['last_name', 'toast', 'description', 'music', 'send'];
   allColumns = [this.customColumn, ...this.defaultColumns];
 
   dataSource: NbTreeGridDataSource<any>;
@@ -69,7 +69,7 @@ export class UsersComponent {
       this.data = [];
       this.allFamilies.map(f => {
         this.data.push({
-          data: { name: f.name, id: f.id, kind: 'dir' },
+          data: { name: f.name, id: f.id, kind: 'dir', send: f.send || false },
           children: [],
         });
         if (f.members) {
@@ -109,7 +109,15 @@ export class UsersComponent {
     member[field] = $event.target.value;
   }
 
-  save() {
+  save(row?) {
+    if (row) {
+      let family = this.allFamilies.find(f => f.id === row.data.id);
+      family.send = !row.data.send;
+      this.familiesCollection.doc(row.data.id).set(family);
+      this.showToast()
+      return;
+
+    }
     this.familiesCollection.doc(this.id).set(this.family);
     this.showToast();
   }
@@ -130,7 +138,9 @@ export class UsersComponent {
       case 'description':
         return 'О себе';
       case 'music':
-        return 'Музика'
+        return 'Музика';
+      case 'send':
+        return 'Отправлено'
     }
   }
 
@@ -138,7 +148,7 @@ export class UsersComponent {
     if (data.kind === 'dir') {
       return;
     }
-    window.open(`https://wedding-invitation-oplachko.herokuapp.com/${data.id}`); 
+    window.open(`https://wedding-invitation-oplachko.herokuapp.com/${data.id}`);
     // window.open(`http://localhost:4200/${data.id}`);
   }
 

@@ -28,7 +28,10 @@
         <div *ngIf="column==='toast'" class="d-flex justify-content-center">
           <nb-checkbox [disabled]="true" [checked]="row.data[column]"></nb-checkbox>
         </div>
-        <div *ngIf="column!=='toast'">
+        <div *ngIf="column==='send'" class="d-flex justify-content-center">
+          <nb-checkbox [checked]="row.data[column]" (checkedChange)="save(row)"></nb-checkbox>
+        </div>
+        <div *ngIf="column!=='toast' && column!=='send'">
           {{row.data[column]}}
         </div>
       </td>
@@ -68,7 +71,7 @@
           </div>
           <div class="mb-4">
             <label class="label mb-3">Під яку музику ти любишь танцювати?</label>
-            <textarea nbInput fullWidth placeholder="Декілька слів про себе"
+            <textarea nbInput fullWidth placeholder="Під яку музику ти любишь танцювати?"
               (change)="changeField($event, member, 'music')"> {{member.music ||'Не має значення'}}</textarea>
           </div>
           <button nbButton outline status="primary" class="align-self-baseline" (click)="save()">Зберегти</button>

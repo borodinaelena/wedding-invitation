@@ -18,7 +18,8 @@ import {
   NbToggleModule,
   NbButtonModule,
   NbTreeGridModule,
-  NbToastrModule
+  NbToastrModule,
+  NbCardModule
 } from '@nebular/theme';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -45,6 +46,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NbToggleModule,
     NbButtonModule,
     NbTreeGridModule,
+    NbCardModule,
     NbToastrModule.forRoot(),
   ],
   providers: [AngularFirestore],

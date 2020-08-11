@@ -37,6 +37,10 @@ h2{
     margin-bottom: 150px;
 }
 
+textarea{
+    min-height: 150px;
+}
+
 ::ng-deep {
     .nb-theme-default nb-tabset .tab.active .tab-link::before {
         background-color: #004c8c !important;
